@@ -39,6 +39,7 @@ public class VehiculoController {
             newVehiculo.setPlaca(vehiculo.placa);
             newVehiculo.setMarca(vehiculo.marca);
             newVehiculo.setModelo(vehiculo.modelo);
+            newVehiculo.setConductor(vehiculo.conductor);
             var saveVehiculo = vehiculoRepository.save(newVehiculo);
             return ResponseEntity.ok(saveVehiculo);
         }

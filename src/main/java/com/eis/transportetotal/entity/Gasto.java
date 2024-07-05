@@ -1,11 +1,9 @@
 package com.eis.transportetotal.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "gastos")
 public class Gasto {
@@ -15,11 +13,25 @@ public class Gasto {
 
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_de_gasto_id")
-    private TipoDeGasto tipoDeGasto;
+
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "viajes_gastos",
+            joinColumns = @JoinColumn(name = "viaje_id"),
+            inverseJoinColumns = @JoinColumn(name = "gasto_id")
+    )
+    private List<Viaje> viajes = new ArrayList<>();
+
+
+
+    public void setViajes(Viaje viaje) {
+        this.viajes.add(viaje);
+    }
 
     private double monto;
+
 
     public Long getId() {
         return id;
@@ -35,14 +47,6 @@ public class Gasto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public TipoDeGasto getTipoDeGasto() {
-        return tipoDeGasto;
-    }
-
-    public void setTipoDeGasto(TipoDeGasto tipoDeGasto) {
-        this.tipoDeGasto = tipoDeGasto;
     }
 
     public double getMonto() {

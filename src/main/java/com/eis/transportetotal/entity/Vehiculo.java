@@ -1,11 +1,6 @@
 package com.eis.transportetotal.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "vehiculos")
 public class Vehiculo {
@@ -13,13 +8,10 @@ public class Vehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String placa;
     private String modelo;
     private String marca;
-
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private CategoriaVehiculo categoria;
 
     private String conductor;
 
@@ -53,14 +45,6 @@ public class Vehiculo {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public CategoriaVehiculo getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaVehiculo categoria) {
-        this.categoria = categoria;
     }
 
     public String getConductor() {

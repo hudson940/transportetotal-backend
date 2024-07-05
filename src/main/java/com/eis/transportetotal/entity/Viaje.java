@@ -1,13 +1,9 @@
 package com.eis.transportetotal.entity;
 import java.time.LocalDate;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "viajes")
 public class Viaje {
@@ -23,7 +19,19 @@ public class Viaje {
     @JoinColumn(name = "ruta_id")
     private Ruta ruta;
 
+    @ManyToMany(mappedBy = "viajes")
+    private List<Gasto> gastos;
+
     private LocalDate fecha;
+
+    public List<Gasto> getGastos() {
+        return gastos;
+    }
+
+    public void setGastos(List<Gasto> gastos) {
+        this.gastos = gastos;
+    }
+
     private double distanciaRecorrida;
 
     public Long getId() {

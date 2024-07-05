@@ -5,6 +5,7 @@ public class RegisterVehiculo {
     public String placa;
     public String modelo;
     public String marca;
-    public String idCategoria;
+    public String conductor;
+
 
 }
