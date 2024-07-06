@@ -9,3 +9,8 @@ TransporteTotal es una compañía que cuenta con una flota de vehículos para el
 - configurar la conexión a base de datos en `\src\main\resources\application.properties`
 - correr el project spring para iniciar el API
 
+# Diseño base de datos
+![alt base_de_datos](https://github.com/hudson940/transportetotal-backend/blob/main/Dise%C3%B1o%20Base%20de%20datos.jpg)
+
+# Resultados de las pruebas
+![alt tests_result](https://github.com/hudson940/transportetotal-backend/blob/main/src/test/test_results.png)
