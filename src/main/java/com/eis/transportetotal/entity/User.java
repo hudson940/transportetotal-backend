@@ -1,6 +1,7 @@
 package com.eis.transportetotal.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +26,7 @@ public class User implements UserDetails {
     @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
+    @JsonIgnore
     @Column(name = "password", length = Integer.MAX_VALUE)
     private String password;
 
