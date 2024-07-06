@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -33,6 +34,10 @@ public class AuthenticationService {
 
     public User signup(RegisterUserDto input) {
         var user = new User();
+        Optional<User> existUser = userRepository.findByEmail(input.getEmail());
+        if (existUser.isPresent()){
+            return existUser.get();
+        }
         user.setEmail(input.getEmail());
         user.setPassword(passwordEncoder.encode(input.getPassword()));
         user.setName(input.getName());

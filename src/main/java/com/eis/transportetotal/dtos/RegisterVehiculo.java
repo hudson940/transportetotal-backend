@@ -7,5 +7,10 @@ public class RegisterVehiculo {
     public String marca;
     public String conductor;
 
-
+    public RegisterVehiculo(String placa, String modelo, String marca, String conductor) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.conductor = conductor;
+    }
 }
